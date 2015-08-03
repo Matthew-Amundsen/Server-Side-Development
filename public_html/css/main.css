@@ -1,0 +1,60 @@
+
+/*These borders can be deleted after styling is finished. */
+.col-xs-1 {
+	border: 1px solid #000;
+}
+.col-xs-2 {
+	border: 1px solid #000;
+}
+.col-xs-3 {
+	border: 1px solid #000;
+}
+.col-xs-4 {
+	border: 1px solid #000;
+}
+.col-xs-5 {
+	border: 1px solid #000;
+}
+.col-xs-6 {
+	border: 1px solid #000;
+}
+.col-xs-7 {
+	border: 1px solid #000;
+}
+.col-xs-8 {
+	border: 1px solid #000;
+}
+.col-xs-9 {
+	border: 1px solid #000;
+}
+.col-xs-10 {
+	border: 1px solid #000;
+}
+.col-xs-11 {
+	border: 1px solid #000;
+}
+.col-xs-12 {
+	border: 1px solid #000;
+}
+
+/* ================================================= */
+
+#navigation {
+/*	width: 240px;*/
+}
+
+.container{
+	width: auto;
+}
+
+#navigation {
+	/*width: 240px;*/
+	height: 100vh;
+	background-color: #19191f;
+	color: #fff;
+}
+
+#navigation button{
+	background-color: #82a83e;
+	border: none;
+}

@@ -1,0 +1,5 @@
+config.inc.php
+composer.json
+composer.lock
+php-error.log
+public_html/vendor

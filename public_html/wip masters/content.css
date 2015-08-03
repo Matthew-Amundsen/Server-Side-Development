@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="container pull-left">
+		<div class="row">
+			<div class="col-xs-2">
+			<!-- Nav Bar -->
+			<h2>FORUM</h2>
+				<div class="form-group has-feedback">
+					<input id="search" name="search" type="text" class="form-control" placeholder="Search" />
+					<i class="glyphicon glyphicon-search form-control-feedback"></i>
+				</div>
+				<hr>
+<!-- Login / Register Buttons - When you first visit this is displayed-->
+				<button id="login">Login</button>
+				<button id="register">Register</button>
+<!-- ======================================================================================================================== -->
+				<hr>
+<!-- Login Form for existing users -->
+				<div class="form-group has-feedback">
+					<input id="username" name="username" type="text" class="form-control" placeholder="Username" />
+					<i class="glyphicon glyphicon-user form-control-feedback"></i>
+				</div>
+				<div class="form-group has-feedback">
+					<input id="password" name="password" type="password" class="form-control" placeholder="Password" />
+					<i class="glyphicon glyphicon-lock form-control-feedback"></i>
+				</div>
+				<button id="login">Login</button>
+<!-- ======================================================================================================================== -->
+				<hr>
+<!-- User display panel for logged in users -->
+				<h3>Fallout_Boy</h3>
+				<img id="avatar" src="images/placeholder-avatar.png">
+				<p>Profile <span class="glyphicon glyphicon-user"></span></p>
+				<p>Log Out <span class="glyphicon glyphicon-log-out"></span></p>
+<!-- ======================================================================================================================== -->
+				<hr>
+<!-- Register Form for new users -->
+				<div class="form-group has-feedback">
+					<input id="username" name="username" type="text" class="form-control" placeholder="Username" />
+					<i class="glyphicon glyphicon-user form-control-feedback"></i>
+				</div>
+				<div class="form-group has-feedback">
+					<input id="email" name="email" type="text" class="form-control" placeholder="Email Address" />
+					<i class="glyphicon glyphicon-envelope form-control-feedback"></i>
+				</div>
+				<div class="form-group has-feedback">
+					<input id="password1" name="password1" type="password" class="form-control" placeholder="Password" />
+					<i class="glyphicon glyphicon-lock form-control-feedback"></i>
+				</div>
+				<div class="form-group has-feedback">
+					<input id="password2" name="password2" type="password" class="form-control" placeholder="Confirm Password" />
+					<i class="glyphicon glyphicon-lock form-control-feedback"></i>
+				</div>
+				<button id="register">Register</button>
+<!-- ======================================================================================================================== -->
+				<hr>
+<!-- Area where latest posts are displayed -->		
+				<h4>Latest Posts</h4>
+				<p>The Official Cat Thread</p>
+				<p>Help! cant find part...</p>
+				<p>Where do you go to g...</p>
+			</div>
+
+			<div class="col-xs-10">
+				<div class="row">
+					<div class="col-xs-8">
+						<p>THREAD NAME</p>
+					</div>
+					<div class="col-xs-2">
+						<p>THREAD VIEW COUNT</p>
+					</div>
+					<div class="col-xs-2">
+						<p>THREAD REPLY COUNT</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-8">
+						<p>THREAD NAME</p>
+					</div>
+					<div class="col-xs-2">
+						<p>THREAD VIEW COUNT</p>
+					</div>
+					<div class="col-xs-2">
+						<p>THREAD REPLY COUNT</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-8">
+						<p>THREAD NAME</p>
+					</div>
+					<div class="col-xs-2">
+						<p>THREAD VIEW COUNT</p>
+					</div>
+					<div class="col-xs-2">
+						<p>THREAD REPLY COUNT</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-8">
+						<p>THREAD NAME</p>
+					</div>
+					<div class="col-xs-2">
+						<p>THREAD VIEW COUNT</p>
+					</div>
+					<div class="col-xs-2">
+						<p>THREAD REPLY COUNT</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
