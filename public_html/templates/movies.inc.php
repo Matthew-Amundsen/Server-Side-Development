@@ -4,7 +4,7 @@
 					
 						<h1>Movies</h1>
 
-						<?php if(static::$auth->isAdmin()): ?>
+						<?php if(static::$auth->user()): ?>
 							<p>
 								<a class="btn btn-success" href="./?page=movie.create">
 									<span class="glyphicon glyphicon-plus"></span> Add Movie

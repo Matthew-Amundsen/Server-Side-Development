@@ -31,7 +31,7 @@ class MoviesController extends Controller
 //----------------------------------------------------------------------------------------------------------------//
 	public function create()
 	{
-		static::$auth->mustBeAdmin();
+		static::$auth->user();
 
 		$movie = $this->getMovieFormData();
 
@@ -41,7 +41,7 @@ class MoviesController extends Controller
 //----------------------------------------------------------------------------------------------------------------//
 	public function store() 
 	{
-		static::$auth->mustBeAdmin();
+		static::$auth->user();
 
 		$movie = new Movie($_POST);
 
