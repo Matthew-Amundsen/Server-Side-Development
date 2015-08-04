@@ -4,45 +4,55 @@
 
 				<div class="col-xs-10">
 
-					<h1><?= $movie->title ?></h1>
-
-					<p><?= $movie->description ?></p>
+					<h3><?= $movie->title ?></h3>
+					<hr>
+					<div class="media-left">
+						<img src="images/placeholder-avatar-sm.jpg" alt="">
+					</div>
+					<div class="media-body">
+						<p><?= $movie->user()->username ?> : <?= date("M 'j", strtotime($movie->created)); ?></p>
+						<p><?= $movie->description ?></p>
+					</div>
 
 					<?php if(static::$auth->isAdmin()): ?>
-						<p>
-							<a href="./?page=movie.edit&amp;id=<?= $movie->id ?>" class="btn btn-sm btn-primary">Edit Movie</a>
-						</p>
+						<a href="./?page=movie.edit&amp;id=<?= $movie->id ?>" class="btn btn-sm btn-primary">Edit Movie</a>
+						<form method="POST" action="./?page=movie.destroy" class="form-inline">
+							<input type="hidden" name="id" value="<?= $movie->id ?>">
+							<button class="btn btn-sm btn-danger">Delete Movie</button>
+						</form>
 					<?php endif; ?>
 
-					<h3>Comments</h3>
-						<?php if (count($comments) > 0): ?>
-						<?php $count = 0; ?>
-						<?php foreach($comments as $comment): ?>
-						<?php $count += 1; ?>
-							<article id="comment-<?= $comment->id ?>" class="media">
-								<div class="media-left">
-									<img src="images/placeholder-avatar-sm.jpg" alt="">
-								</div>
-								<div class="media-body">
-									<h4 class="media-heading"><?= $comment->user()->username ?> <?= date("M 'j", strtotime($comment->created)); ?></h4>
-									<p>
-										<?= $comment->comment ?>
+					<hr>
 
-										<?php if(static::$auth->isAdmin()): ?>
-											<p>
-												<a href="./?page=comment.edit&amp;id=<?= $comment->id ?>" class="btn btn-xs btn-default">Edit Comment</a>
-											</p>
-										<?php endif; ?>
-									</p>
-								</div>
-							</article>
-							<hr>
-						<?php endforeach; ?>
-						<?php else: ?>
-							<p>No comments. Yet…</p>
-						<?php endif; ?>
+					<?php if (count($comments) > 0): ?>
+					<?php $count = 0; ?>
+					<?php foreach($comments as $comment): ?>
+					<?php $count += 1; ?>
+						<article id="comment-<?= $comment->id ?>" class="media">
+							<div class="media-left">
+								<img src="images/placeholder-avatar-sm.jpg" alt="">
+								<p class="text-center"><?= ucfirst($comment->user()->role); ?></p>
+							</div>
+							<div class="media-body">
+								<p class="media-heading"><?= $comment->user()->username ?> : <?= date("M 'j", strtotime($comment->created)); ?></p>
+								<p>
+									<?= $comment->comment ?>
 
-					<h3>Add Comment to '<?= $movie->title ?>'</h3>
+									<?php if(static::$auth->isAdmin()): ?>
+										<p>
+											<a href="./?page=comment.edit&amp;id=<?= $comment->id ?>" class="btn btn-xs btn-default">Edit Comment</a>
+										</p>
+									<?php endif; ?>
+								</p>
+							</div>
+						</article>
+						<hr>
+					<?php endforeach; ?>
+					<?php else: ?>
+						<p>No comments. Yet…</p>
+					<?php endif; ?>
+
+					<h4>Add Comment to '<?= $movie->title ?>'</h4>
 					<?php if (static::$auth->check()): ?>
 						<form method="POST" action="./?page=comment.create" class="form-horizontal">
 							<input type="hidden" name="movie_id" value="<?= $movie->id ?>">

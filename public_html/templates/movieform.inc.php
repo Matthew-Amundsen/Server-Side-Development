@@ -1,6 +1,11 @@
 			<?php 
 				$errors = $movie->errors;
-				$submitAction = "./?page=movie.store";
+				$verb = ($movie->id ? "Edit" : "Add");
+				if ($movie->id) {
+					$submitAction = "./?page=movie.update";
+				} else {
+					$submitAction = "./?page=movie.store";
+				}
 			?>
 
 				<div class="col-xs-10">
@@ -12,7 +17,7 @@
 								<input type="hidden" name="id" value="<?= $movie->id ?>">
 							<?php endif; ?>
 							
-							<h1>New Thread</h1>
+							<h1><?= $verb ?> Thread</h1>
 
 								<div class="form-group <?php if ($errors['title']): ?> has-error <?php endif; ?>">
 									<label for="title" class="col-sm-4 col-md-2 control-label">Thread Title</label>

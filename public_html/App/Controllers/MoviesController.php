@@ -31,7 +31,6 @@ class MoviesController extends Controller
 //----------------------------------------------------------------------------------------------------------------//
 	public function create()
 	{
-		static::$auth->user();
 
 		$movie = $this->getMovieFormData();
 
@@ -41,19 +40,17 @@ class MoviesController extends Controller
 //----------------------------------------------------------------------------------------------------------------//
 	public function store() 
 	{
-		static::$auth->user();
 
-		$movie = new Movie($_POST);
+		$input = $_POST;
+		$input['user_id'] =	static::$auth->user()->id;
+
+		$movie = new Movie($input);
 
 		if (! $movie->isValid()) {
 			$_SESSION['movie.form'] = $movie;
 			
 			header("Location: ./?page=movie.create");
 			exit();
-		}
-
-		if ($_FILES['poster']['error'] === UPLOAD_ERR_OK) {
-			$movie->savePoster($_FILES['poster']['tmp_name']);
 		}
 
 		$movie->save();

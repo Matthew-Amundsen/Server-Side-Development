@@ -104,6 +104,15 @@ class AuthenticationService
 		return static::$currentUser->role === 'admin';
 	}
 
+	public function isMod()
+	{
+		if(!static::$currentUser) {
+			return false;
+		}
+
+		return static::$currentUser->role === 'moderator';
+	}
+
 	public function mustBeAdmin()
 	{
 		if(!$this->isAdmin()) {

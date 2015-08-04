@@ -15,7 +15,7 @@
 						<ul>
 							<?php foreach($movies as $movie): ?>
 								<li><a href="./?page=movie&amp;id=<?= $movie->id ?>">
-								<?= $movie->title; ?> (<?= $movie->year ?>)
+								<?= $movie->title; ?>
 								</a></li>
 							<?php endforeach; ?>
 						</ul>
