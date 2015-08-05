@@ -8,10 +8,8 @@
 				}
 			?>
 
-				<div class="col-xs-10">
-					
-					<div class="row">
-						<div class="col-xs-12">
+				<div class="row">
+					<div class="col-xs-12">
 							<form method="POST" action="<?= $submitAction ?>" class="form-horizontal" enctype="multipart/form-data">
 							<?php if($movie->id): ?>
 								<input type="hidden" name="id" value="<?= $movie->id ?>">

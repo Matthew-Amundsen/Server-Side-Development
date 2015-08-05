@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
+use App\Models\Comment;
 use App\Models\Movie;
 use App\Views\MoviesView;
 use App\Views\SingleMovieView;
 use App\Views\MovieFormView;
-use App\Models\Comment;
 
 class MoviesController extends Controller
 {

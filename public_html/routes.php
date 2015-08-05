@@ -7,8 +7,9 @@ use App\Controllers\MerchandiseController;
 use App\Controllers\MovieSuggestController;
 use App\Controllers\ErrorController;
 use App\Controllers\AuthenticationController;
-use App\Services\Exceptions\InsufficientPrivilegesException;
 use App\Controllers\CommentsController;
+use App\Controllers\ProfileController;
+use App\Services\Exceptions\InsufficientPrivilegesException;
 
 use \App\Models\Exceptions\ModelNotFoundException;
 
@@ -20,6 +21,13 @@ try {
 		case "home":
 			
 			$controller = new HomeController();
+			$controller->show();
+
+			break;
+
+		case "profile":
+			
+			$controller = new ProfileController();
 			$controller->show();
 
 			break;

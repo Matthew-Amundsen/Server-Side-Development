@@ -40,18 +40,17 @@
 /* ================================================= */
 
 #navigation {
-
+	width: 240px;
+	padding: 10px;
+	position: fixed;
+	height: 100vh;
+	background-color: #19191f;
+	color: #fff;
 }
 
 .container{
 	width: auto;
-}
-
-#navigation {
-	/*width: 240px;*/
-	height: 100vh;
-	background-color: #19191f;
-	color: #fff;
+	margin-left: 240px;
 }
 
 #navigation button{

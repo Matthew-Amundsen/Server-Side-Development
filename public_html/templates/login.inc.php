@@ -3,10 +3,8 @@
 			?>
 
 
-				<div class="col-xs-10">
-					
-					<div class="row">
-						<div class="col-xs-12">
+				<div class="row">
+					<div class="col-xs-12">
 							<form method="POST" action="./?page=auth.attempt" class="form-horizontal">
 								<h1>Log In</h1>
 

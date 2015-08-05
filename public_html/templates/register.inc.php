@@ -2,10 +2,8 @@
 				$errors = $user->errors;
 			?>
 
-				<div class="col-xs-10">
-					
-					<div class="row">
-						<div class="col-xs-12">
+				<div class="row">
+					<div class="col-xs-12">
 							<form method="POST" action="./?page=auth.store" class="form-horizontal">
 								<h1>Register New User</h1>
 

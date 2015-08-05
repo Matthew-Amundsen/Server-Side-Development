@@ -2,19 +2,19 @@
 
 namespace App\Views;
 
-class SingleItemView extends TemplateView
+class ProfileView extends TemplateView
 {
 	public function render()
 	{
 		extract($this->data);
-		$page = "item";
-		$page_title = $item->name;
+		$page = "profile";
+		$page_title = "User Name";
 		include "templates/master.inc.php";
 	}
 
 	protected function content()
 	{
 		extract($this->data);
-		include "templates/item.inc.php";
+		include "templates/profile.inc.php";
 	}
 }
