@@ -25,4 +25,27 @@ class Movie extends DatabaseModel
 	{
 		return new User($this->user_id);
 	}
+
+	public static function search($searchquery)
+	{
+		$models = [];
+		$db = static::getDatabaseConnection();
+
+		$query = "SET @searchterm = :searchquery ;";
+		$statement = $db->prepare($query);
+		$statement->bindValue(':searchquery', $searchquery);
+		$statement->execute();
+
+		$query = "SELECT title, description FROM movies WHERE MATCH(title) AGAINST (@searchterm) OR MATCH(description) AGAINST (@searchterm)";
+
+		$statement = $db->prepare($query);
+		$statement->execute();
+		while ($record = $statement->fetch(PDO::FETCH_ASSOC)) {
+			$model = new Movie();
+			$model->data = $record;
+			array_push($models, $model);
+		}
+
+		return $models;
+	}
 }

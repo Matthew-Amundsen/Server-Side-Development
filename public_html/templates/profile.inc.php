@@ -3,10 +3,10 @@
 
 						<div class="media-left">
 							<img src="images/placeholder-avatar-sm.jpg" alt="">
-							<p class="text-center"><?= ucfirst(static::$auth->user()->role); ?></p>
+							<p class="text-center"><?= ucfirst($user->role); ?></p>
 						</div>
 						<div class="media-body">
-							<h1><?= static::$auth->user()->username; ?></h1>
+							<h1><?= $user->username; ?></h1>
 						</div>
 						<hr>
 						<div>
@@ -17,19 +17,16 @@
 								<article id="comment-<?= $comment->id ?>" class="media">
 									<div class="media-left">
 										<img src="images/placeholder-avatar-sm.jpg" alt="">
-										<p class="text-center"><?= ucfirst($comment->user()->role); ?></p>
+										<p class="text-center"><?= ucfirst($user->role); ?></p>
 									</div>
 									<div class="media-body">
-										<p class="media-heading"><?= $comment->user()->username ?> : <?= date("M 'j", strtotime($comment->created)); ?></p>
-										<p>
-											<?= $comment->comment ?>
+									
+										<span><?= $comment->user()->username ?></span>
+To replace the above line////////////	<span><a href="./?page=movie&amp;id=<?= $movie->id ?>"><?= $movie->title; ?></a></span>		//////////// Not Working ////
 
-											<?php if(static::$auth->isAdmin()): ?>
-												<p>
-													<a href="./?page=comment.edit&amp;id=<?= $comment->id ?>" class="btn btn-xs btn-default">Edit Comment</a>
-												</p>
-											<?php endif; ?>
-										</p>
+										<span class="pull-right"><?= date("M 'j", strtotime($comment->created)); ?></span>
+
+										<p><?= $comment->comment ?></p>
 									</div>
 								</article>
 								<hr>

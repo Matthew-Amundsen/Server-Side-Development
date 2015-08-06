@@ -11,7 +11,8 @@
 							<img src="images/placeholder-avatar-sm.jpg" alt="">
 						</div>
 						<div class="media-body">
-							<p><?= $movie->user()->username ?> : <?= date("M 'j", strtotime($movie->created)); ?></p>
+							<a href="./?page=profile&amp;id=<?= $movie->user()->id; ?>"><?= $movie->user()->username ?></a>
+							<span class="pull-right"><?= date("M 'j", strtotime($movie->created)); ?></span>
 							<p><?= $movie->description ?></p>
 						</div>
 
@@ -32,10 +33,17 @@
 							<article id="comment-<?= $comment->id ?>" class="media">
 								<div class="media-left">
 									<img src="images/placeholder-avatar-sm.jpg" alt="">
-									<p class="text-center"><?= ucfirst($comment->user()->role); ?></p>
+
+									<?php if($comment->user()->role === "admin"): ?>
+										<p class="text-center admin-color">Admin</p>
+									<?php endif; ?>
+
 								</div>
 								<div class="media-body">
-									<p class="media-heading"><?= $comment->user()->username ?> : <?= date("M 'j", strtotime($comment->created)); ?></p>
+									<p class="media-heading">
+										<a href="./?page=profile&amp;id=<?= $comment->user()->id; ?>"><?= $comment->user()->username ?></a>
+										<span class="pull-right"><?= date("M 'j", strtotime($comment->created)); ?></span>
+									</p>
 									<p>
 										<?= $comment->comment ?>
 

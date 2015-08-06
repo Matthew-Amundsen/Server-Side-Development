@@ -9,6 +9,7 @@ use App\Controllers\ErrorController;
 use App\Controllers\AuthenticationController;
 use App\Controllers\CommentsController;
 use App\Controllers\ProfileController;
+use App\Controllers\SearchController;
 use App\Services\Exceptions\InsufficientPrivilegesException;
 
 use \App\Models\Exceptions\ModelNotFoundException;
@@ -29,6 +30,13 @@ try {
 			
 			$controller = new ProfileController();
 			$controller->show();
+
+			break;
+
+		case "search";
+
+			$controller = new SearchController();
+			$controller->search();
 
 			break;
 ////////////////////////////////////////////////////////////////////////

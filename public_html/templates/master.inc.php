@@ -13,9 +13,12 @@
 	<div id="navigation">
 	<!-- Nav Bar -->
 	<h2>FORUM</h2>
+
 		<div class="form-group has-feedback">
-			<input id="search" name="search" type="text" class="form-control" placeholder="Search" />
-			<i class="glyphicon glyphicon-search form-control-feedback"></i>
+			<form method="GET" action="./" role="search">
+				<input type="hidden" name="page" value="search">
+				<input name="q" type="search" class="form-control" placeholder="Search">
+			</form>
 		</div>
 
 		<hr>
@@ -34,7 +37,7 @@
 				<li <?php if ($page === "auth.register"): ?>class="active"<?php endif; ?>><a href="./?page=register">Register</a></li>
 				<li <?php if ($page === "auth.login"): ?>class="active"<?php endif; ?>><a href="./?page=login">Log In</a></li>
 			<?php else: ?>
-				<li><a href="./?page=profile"><?= static::$auth->user()->username; ?></a></li>
+				<li><a href="./?page=profile&amp;id=<?= static::$auth->user()->id; ?>"><?= static::$auth->user()->username; ?></a>
 				<li><a href="./?page=logout">Logout</a></li>
 			<?php endif; ?>
 		</ul>
