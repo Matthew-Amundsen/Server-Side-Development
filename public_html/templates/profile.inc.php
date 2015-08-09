@@ -1,5 +1,5 @@
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-xs-11">
 
 						<div class="media-left">
 							<img src="images/placeholder-avatar-sm.jpg" alt="">
@@ -8,7 +8,9 @@
 						<div class="media-body">
 							<h1><?= $user->username; ?></h1>
 						</div>
-						<hr>
+						
+						<hr id="divider">
+
 						<div>
 							<?php if (count($comments) > 0): ?>
 							<?php $count = 0; ?>
@@ -21,8 +23,7 @@
 									</div>
 									<div class="media-body">
 									
-										<span><?= $comment->user()->username ?></span>
-To replace the above line////////////	<span><a href="./?page=movie&amp;id=<?= $movie->id ?>"><?= $movie->title; ?></a></span>		//////////// Not Working ////
+										<span><a href="./?page=movie&amp;id=<?= $comment->movie_id ?>"><?= $comment->movie()->title ?></a></span>
 
 										<span class="pull-right"><?= date("M 'j", strtotime($comment->created)); ?></span>
 

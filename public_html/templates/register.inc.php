@@ -3,7 +3,7 @@
 			?>
 
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-xs-11">
 							<form method="POST" action="./?page=auth.store" class="form-horizontal">
 								<h1>Register New User</h1>
 

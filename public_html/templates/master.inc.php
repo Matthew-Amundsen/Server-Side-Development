@@ -25,22 +25,21 @@
 <!-- Navigation Buttons - When you first visit this is displayed-->
 		<nav>
 			<ul>
-				<li <?php if ($page === "index"): ?>class="active"<?php endif; ?>><a href="./">Categories</a></li>
-				<li <?php if ($page === "movies"): ?>class="active"<?php endif; ?>><a href="./?page=movies">Top</a></li>
-				<li <?php if ($page === "movie"): ?>class="active"<?php endif; ?>><a href="./?page=movie&amp;id=56">Latest</a></li>
+				<li <?php if ($page === "index"): ?>class="active"<?php endif; ?>><a href="./"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Categories</a></li>
+				<li <?php if ($page === "movie"): ?>class="active"<?php endif; ?>><a href="./?page=movie&amp;id=56"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Latest</a></li>
 			</ul>			
-		</nav>
 		<hr>
 <!-- Login / Register Buttons - When you first visit this is displayed-->
 		<ul>
 			<?php if(! static::$auth->check()): ?>
-				<li <?php if ($page === "auth.register"): ?>class="active"<?php endif; ?>><a href="./?page=register">Register</a></li>
-				<li <?php if ($page === "auth.login"): ?>class="active"<?php endif; ?>><a href="./?page=login">Log In</a></li>
+				<li <?php if ($page === "auth.register"): ?>class="active"<?php endif; ?>><a href="./?page=register"><span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> Register </a></li>
+				<li <?php if ($page === "auth.login"): ?>class="active"<?php endif; ?>><a href="./?page=login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log In</a></li>
 			<?php else: ?>
-				<li><a href="./?page=profile&amp;id=<?= static::$auth->user()->id; ?>"><?= static::$auth->user()->username; ?></a>
-				<li><a href="./?page=logout">Logout</a></li>
+				<li><a href="./?page=profile&amp;id=<?= static::$auth->user()->id; ?>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?= static::$auth->user()->username; ?></a></li>
+				<li><a href="./?page=logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li> 
 			<?php endif; ?>
 		</ul>
+	</nav>
 <!-- ======================================================================================================================== -->
 		<hr>
 	</div>

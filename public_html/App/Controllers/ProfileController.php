@@ -18,7 +18,6 @@ class ProfileController extends Controller
 		$comments = Comment::allBy("user_id", $_GET['id']);
 		$user = new User($_GET['id']);
 
-
 		$view = new ProfileView(compact("comments", "user"));
 		$view->render();
 	}

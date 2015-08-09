@@ -1,6 +1,6 @@
 
 /*These borders can be deleted after styling is finished. */
-.col-xs-1 {
+/*.col-xs-1 {
 	border: 1px solid #000;
 }
 .col-xs-2 {
@@ -35,17 +35,21 @@
 }
 .col-xs-12 {
 	border: 1px solid #000;
-}
+}*/
 
 /* ================================================= */
 
 #navigation {
 	width: 240px;
-	padding: 10px;
+	padding: 10px 20px;
 	position: fixed;
 	height: 100vh;
 	background-color: #19191f;
 	color: #fff;
+}
+
+#navigation hr {
+	margin-bottom: 10px;
 }
 
 .container{
@@ -61,3 +65,117 @@
 .admin-color {
 	color: orange;
 }
+
+/* ================================================= */
+
+#navigation h2 {
+	text-align: center;
+}
+
+h2 a:link {
+	color: #fff;
+	text-decoration: none;
+}
+
+h2 a:visited {
+	color: #fff;
+}
+
+h2 a:hover {
+	color: #fff;
+}
+
+h2 a:active {
+	color: #fff;
+}
+
+/* ================================================= */
+
+nav ul {
+	padding: 0px;
+}
+
+nav li {
+	list-style: none;
+}
+
+nav a:link {
+	color: #8c8c9c;
+	text-decoration: none;
+	display: block;
+	padding: 8px 0px 8px 20px;
+	width: 240px;
+	margin: 0 0 0 -20px;
+}
+
+nav a:visited {
+	color: #8c8c9c;
+}
+
+nav a:hover {
+	color: #fff;
+	background-color: #101014;
+}
+
+nav a:active {
+	color: #8c8c9c;
+}
+
+/* ================================================= */
+
+.threads {
+	color: #939393;
+	font-size: 1.2em;
+}
+
+a:link {
+	color: #000;
+	text-decoration: none;
+}
+
+.threads a:visited {
+	color: #939393;
+}
+
+.threads a:hover {
+	color: #33CC33;
+}
+
+.threads a:active {
+	color: #33CC33;
+}
+
+.thread {
+	padding-top: 10px;
+}
+
+hr {
+	padding: 0;
+	margin: 0;
+}
+
+h3 {
+	color: #000;
+}
+
+#divider {
+	border: none;
+	background-color: #D6D6D6;
+	height: 3px;
+	margin-bottom: 20px;
+}
+
+.threads-header {
+	margin-top: 41px;
+}
+
+/* ================================================= */
+
+.thread p {
+	text-align: center;
+}
+
+
+
+
+

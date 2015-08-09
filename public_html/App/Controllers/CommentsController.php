@@ -59,12 +59,6 @@ class CommentsController extends Controller
 			exit();
 		}
 
-		if ($_FILES['poster']['error'] === UPLOAD_ERR_OK) {
-			$comment->savePoster($_FILES['poster']['tmp_name']);
-		} else if (isset($_POST['remove-image']) && $_POST['remove-image'] === "TRUE") {
-			$comment->poster = null;
-		}
-
 		$comment->save();
 
 		header("Location: ./?page=movie&id=" . $comment->movie_id);

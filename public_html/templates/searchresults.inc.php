@@ -1,5 +1,5 @@
 			<div class="row">
-				<div class="col-xs-12">
+				<div class="col-xs-11">
 					<h1>Search</h1>
 
 					<?php if (count($movies) > 0): ?>

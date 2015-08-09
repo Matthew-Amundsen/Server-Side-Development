@@ -1,5 +1,5 @@
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-xs-11">
 						<div class="jumbotron">		
 							<h1>Error 500</h1>
 							<p>Internal error. Something went wrong. Sorry :/</p>

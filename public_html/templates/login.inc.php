@@ -4,7 +4,7 @@
 
 
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-xs-11">
 							<form method="POST" action="./?page=auth.attempt" class="form-horizontal">
 								<h1>Log In</h1>
 
