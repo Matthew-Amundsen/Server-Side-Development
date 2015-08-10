@@ -35,7 +35,7 @@
 										</a>
 									</div>
 									<div class="col-xs-1">
-										<p><?= "####" ?></p>
+										<p><?= count($movie->comments()) ?></p>
 									</div>
 									<div class="col-xs-1">
 										<p><?= date("M 'j", strtotime($movie->created)) ?></p>
