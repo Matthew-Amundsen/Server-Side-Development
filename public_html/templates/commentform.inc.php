@@ -1,6 +1,6 @@
 			<?php 
 				$errors = $comment->errors;
-				$submitAction = "./?page=comment.update";
+				$submitAction = "./?page=comment.update";	
 			?>
 					
 				<div class="row">
@@ -21,6 +21,31 @@
 								</div>
 							</div>
 							
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+								<div class="form-group form-group-lg<?php if ($errors['poster']): ?> has-error <?php endif; ?>">
+									<label for="poster" class="col-sm-4 col-md-2 control-label">Upload An Image</label>
+									<div class="col-sm-5 col-md-7">
+										<input id="poster" class="form-control input-lg" name="poster"
+										type="file">
+										<div class="help-block"><?= $errors['poster']; ?></div>
+									</div>
+								<?php if($comment->poster != ""): ?>
+									<div class="col-sm-1 col-md-1">
+										<img src="./images/posters/100h/<?= $comment->poster ?>" alt="">
+									</div>
+									<div class="col-sm-2 col-md-2">
+										<div class="checkbox">
+											<label><input type="checkbox" name="remove-image" value="TRUE"> Remove Image</label>
+										</div>
+									</div>
+								<?php else: ?>
+									<div class="col-sm-3 col-md-3">
+										<p><small>no poster found</small></p>
+									</div>
+								<?php endif; ?>
+								</div>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
 							<div class="form-group">
 								<div class="col-sm-offset-4 col-sm-10 col-md-offset-2 col-md-10">
 									<button class="btn btn-xs btn-primary">Submit Edited Comment</button>

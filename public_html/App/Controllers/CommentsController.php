@@ -20,10 +20,15 @@ class CommentsController extends Controller
 			exit();
 		}
 
+		if ($_FILES['poster']['error'] === UPLOAD_ERR_OK) {
+			$newcomment->savePoster($_FILES['poster']['tmp_name']);
+		}
+
 		$newcomment->save();
 		header("Location: ./?page=movie&id=" . $newcomment->movie_id . "#comment-" . $newcomment->id);
 	}
 //----------------------------------------------------------------------------------------------------------------//
+
 	public function edit() 
 	{
 		static::$auth->mustBeAdmin();
@@ -57,6 +62,12 @@ class CommentsController extends Controller
 
 			header("Location: ./?page=comment.edit&id=" . $_POST['id']);
 			exit();
+		}
+
+		if ($_FILES['poster']['error'] === UPLOAD_ERR_OK) {
+			$comment->savePoster($_FILES['poster']['tmp_name']);
+		} else if (isset($_POST['remove-image']) && $_POST['remove-image'] === "TRUE") {
+			$comment->poster = null;
 		}
 
 		$comment->save();
