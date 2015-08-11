@@ -30,7 +30,7 @@
 
 								<div class="form-group">
 									<div class="col-sm-offset-4 col-sm-10 col-md-offset-2 col-md-10">
-										<button class="btn btn-danger">
+										<button class="btn btn-default">
 											<span class="glyphicon glyphicon-ok"></span> Log In
 										</button>
 									</div>

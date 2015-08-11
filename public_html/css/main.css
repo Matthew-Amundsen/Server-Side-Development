@@ -40,13 +40,19 @@
 /* ================================================= */
 
 #navigation {
-	width: 240px;
+	width: 100%;
 	padding: 10px 20px;
-	position: fixed;
-	height: 100vh;
 	background-color: #19191f;
 	color: #fff;
-}
+	}
+
+	@media all and (min-width: 768px) {
+		#navigation {
+			width: 240px;
+			position: fixed;
+			height: 100vh;
+		}
+	}
 
 #navigation hr {
 	margin-bottom: 10px;
@@ -54,8 +60,13 @@
 
 .container{
 	width: auto;
-	margin-left: 240px;
-}
+	}
+	
+	@media all and (min-width: 768px) {
+		.container {
+			margin-left: 240px;
+		}
+	}
 
 #navigation button{
 	background-color: #82a83e;
@@ -63,7 +74,9 @@
 }
 
 .admin-color {
+	margin-top: 5px;
 	color: orange;
+	font-size: 0.9em;
 }
 
 /* ================================================= */
@@ -174,7 +187,6 @@ h3 {
 .thread p {
 	text-align: center;
 }
-
 
 
 

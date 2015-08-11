@@ -43,7 +43,7 @@
 
 								<div class="form-group">
 									<div class="col-sm-offset-4 col-sm-10 col-md-offset-2 col-md-10">
-										<button class="btn btn-success">
+										<button class="btn btn-default">
 											<span class="glyphicon glyphicon-ok"></span> Register
 										</button>
 									</div>

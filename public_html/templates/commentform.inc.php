@@ -48,7 +48,7 @@
 
 							<div class="form-group">
 								<div class="col-sm-offset-4 col-sm-10 col-md-offset-2 col-md-10">
-									<button class="btn btn-xs btn-primary">Submit Edited Comment</button>
+									<button class="btn btn-default">Submit Edited Comment</button>
 								</div>
 							</div>
 

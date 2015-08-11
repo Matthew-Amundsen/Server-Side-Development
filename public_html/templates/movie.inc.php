@@ -7,8 +7,9 @@
 
 						<h3><?= $movie->title ?></h3>
 						<hr>
+						<br>
 						<div class="media-left">
-							<img src="images/placeholder-avatar-sm.jpg" alt="">
+							<img src="<?= $movie->user()->gravatar(48, 'monsterid') ?>" alt="">
 						</div>
 						<div class="media-body">
 							<a href="./?page=profile&amp;id=<?= $movie->user()->id; ?>"><?= $movie->user()->username ?></a>
@@ -16,14 +17,15 @@
 							<p><?= $movie->description ?></p>
 						</div>
 
+						<br>
 						<?php if(static::$auth->isAdmin()): ?>
-							<a href="./?page=movie.edit&amp;id=<?= $movie->id ?>" class="btn btn-sm btn-primary">Edit Movie</a>
 							<form method="POST" action="./?page=movie.destroy" class="form-inline">
+								<a href="./?page=movie.edit&amp;id=<?= $movie->id ?>" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit Thread</a>
 								<input type="hidden" name="id" value="<?= $movie->id ?>">
-								<button class="btn btn-sm btn-danger">Delete Movie</button>
+								<button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-trash"></span> Delete Movie</button>
 							</form>
 						<?php endif; ?>
-
+						<br>
 						<hr>
 
 						<?php if (count($comments) > 0): ?>
@@ -32,7 +34,7 @@
 						<?php $count += 1; ?>
 							<article id="comment-<?= $comment->id ?>" class="media">
 								<div class="media-left">
-									<img src="images/placeholder-avatar-sm.jpg" alt="">
+									<img src="<?= $comment->user()->gravatar(48, 'monsterid') ?>" alt="">
 
 									<?php if($comment->user()->role === "admin"): ?>
 										<p class="text-center admin-color">Admin</p>
@@ -48,12 +50,14 @@
 										<?= $comment->comment ?>
 
 										<?php if($comment->poster != ""): ?>
-											<p><img src="./images/posters/300h/<?= $comment->poster ?>" alt=""></p>
+											<p>
+												<img src="./images/posters/300h/<?= $comment->poster ?>" alt="">
+											</p>
 										<?php endif; ?>
 
 										<?php if(static::$auth->isAdmin()): ?>
 											<p>
-												<a href="./?page=comment.edit&amp;id=<?= $comment->id ?>" class="btn btn-xs btn-default">Edit Comment</a>
+												<a href="./?page=comment.edit&amp;id=<?= $comment->id ?>" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit Comment</a>
 											</p>
 										<?php endif; ?>
 									</p>
@@ -82,8 +86,7 @@
 								<div class="form-group form-group-lg<?php if ($errors['poster']): ?> has-error <?php endif; ?>">
 									<label for="poster" class="col-sm-4 col-md-2 control-label">Upload An Image</label>
 									<div class="col-sm-5 col-md-7">
-										<input id="poster" class="form-control input-lg" name="poster"
-										type="file">
+										<input id="poster" class="form-control" name="poster" type="file">
 										<div class="help-block"><?= $errors['poster']; ?></div>
 									</div>
 								</div>
@@ -91,8 +94,8 @@
 
 								<div class="form-group">
 									<div class="col-sm-offset-4 col-sm-10 col-md-offset-2 col-md-10">
-										<button class="btn btn-success">
-											<span class="glyphicon glyphicon-ok"></span> Add Comment
+										<button class="btn btn-default">
+											<span class="glyphicon glyphicon-comment"></span> Add Comment
 										</button>
 									</div>
 								</div>
