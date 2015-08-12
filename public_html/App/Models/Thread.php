@@ -5,10 +5,10 @@ use PDO;
 use finfo;
 use Intervention\Image\ImageManagerStatic as Image;
 
-class Movie extends DatabaseModel
+class Thread extends DatabaseModel
 {
 	protected static $columns = ['id', 'user_id', 'title', 'description', 'created'];
-	protected static $tableName = "movies";
+	protected static $tableName = "threads";
 
 	protected static $validationRules = [
 		'title' => 'minlength:1',
@@ -18,7 +18,7 @@ class Movie extends DatabaseModel
 
 	public function comments()
 	{
-		return Comment::allBy('movie_id', $this->id);
+		return Comment::allBy('thread_id', $this->id);
 	}
 
 	public function user()
@@ -36,12 +36,26 @@ class Movie extends DatabaseModel
 		$statement->bindValue(':searchquery', $searchquery);
 		$statement->execute();
 
-		$query = "SELECT title, description FROM movies WHERE MATCH(title) AGAINST (@searchterm) OR MATCH(description) AGAINST (@searchterm)";
+		$query = "SELECT
+				threads.id, title, description,
+				MATCH(title) AGAINST(@searchterm) * 2 AS score_title,
+				MATCH(description) AGAINST(@searchterm) AS score_description,
+				MATCH(commentblob) AGAINST(@searchterm IN BOOLEAN MODE) * 1.5 AS score_comment
+			FROM threads
+			LEFT JOIN (
+				SELECT thread_id, GROUP_CONCAT(comment SEPARATOR ' ') AS commentblob FROM comments
+				GROUP BY thread_id
+			) AS comments ON threads.id = comments.thread_id
+			WHERE
+				MATCH(title) AGAINST(@searchterm) OR
+				MATCH(description) AGAINST(@searchterm) OR
+				MATCH(commentblob) AGAINST(@searchterm IN BOOLEAN MODE)
+			ORDER BY (score_title + score_description + score_comment) DESC";
 
 		$statement = $db->prepare($query);
 		$statement->execute();
 		while ($record = $statement->fetch(PDO::FETCH_ASSOC)) {
-			$model = new Movie();
+			$model = new Thread();
 			$model->data = $record;
 			array_push($models, $model);
 		}

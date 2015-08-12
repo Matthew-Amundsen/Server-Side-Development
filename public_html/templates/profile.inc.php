@@ -1,14 +1,16 @@
 				<div class="row">
 					<div class="col-xs-11">
+						<div class="well well-sm">
+							<div class="media-left">
+								<br>
+								<img src="<?= $user->gravatar(48, 'monsterid') ?>" alt="">
+								<p class="text-center admin-color"><?= ucfirst($user->role); ?></p>
+							</div>
+							<div class="media-body">
+								<h1><?= $user->username; ?></h1>
+							</div>
+						</div>
 
-						<div class="media-left">
-							<img src="images/placeholder-avatar-sm.jpg" alt="">
-							<p class="text-center admin-color"><?= ucfirst($user->role); ?></p>
-						</div>
-						<div class="media-body">
-							<h1><?= $user->username; ?></h1>
-						</div>
-						
 						<h4>Users History</h4>
 						<hr id="divider">
 
@@ -19,13 +21,13 @@
 							<?php $count += 1; ?>
 								<article id="comment-<?= $comment->id ?>" class="media">
 									<div class="media-left">
-										<img src="images/placeholder-avatar-sm.jpg" alt="">
+										<img src="<?= $comment->user()->gravatar(48, 'monsterid') ?>" alt="">
 									</div>
 									<div class="media-body">
 									
-										<span><a href="./?page=movie&amp;id=<?= $comment->movie_id ?>"><?= $comment->movie()->title ?></a></span>
+										<span><a href="./?page=thread&amp;id=<?= $comment->thread_id ?>"><?= $comment->thread()->title ?></a></span>
 
-										<span class="pull-right"><?= date("M 'j", strtotime($comment->created)); ?></span>
+										<span class="pull-right"><?= date("j 'M", strtotime($comment->created)); ?></span>
 
 										<p><?= $comment->comment ?></p>
 										<?php if($comment->poster != ""): ?>

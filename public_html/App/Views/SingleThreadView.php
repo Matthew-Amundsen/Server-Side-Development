@@ -2,19 +2,19 @@
 
 namespace App\Views;
 
-class SingleMovieView extends TemplateView
+class SingleThreadView extends TemplateView
 {
 	public function render()
 	{
 		extract($this->data);
-		$page = "movie";
-		$page_title = $movie->title;
+		$page = "thread";
+		$page_title = $thread->title;
 		include "templates/master.inc.php";
 	}
 
 	protected function content()
 	{
 		extract($this->data);
-		include "templates/movie.inc.php";
+		include "templates/thread.inc.php";
 	}
 }

@@ -3,10 +3,10 @@
 namespace App\Controllers;
 
 use App\Models\Comment;
-use App\Models\Movie;
-use App\Views\MoviesView;
-use App\Views\SingleMovieView;
-use App\Views\MovieFormView;
+use App\Models\Thread;
+use App\Views\ThreadsView;
+use App\Views\SingleThreadView;
+use App\Views\ThreadFormView;
 use App\Views\ProfileView;
 
 use App\Models\User;

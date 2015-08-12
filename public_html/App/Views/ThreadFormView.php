@@ -2,19 +2,19 @@
 
 namespace App\Views;
 
-class MovieFormView extends TemplateView
+class ThreadFormView extends TemplateView
 {
 	public function render()
 	{
 		extract($this->data);
-		$page = "movie.form";
-		$page_title = "Add New Movie";
+		$page = "thread.form";
+		$page_title = "Add New Thread";
 		include "templates/master.inc.php";
 	}
 
 	protected function content()
 	{
 		extract($this->data);
-		include "templates/movieform.inc.php";
+		include "templates/threadform.inc.php";
 	}
 }

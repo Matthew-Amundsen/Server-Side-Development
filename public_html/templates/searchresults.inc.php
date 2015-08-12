@@ -2,22 +2,24 @@
 				<div class="col-xs-11">
 					<h1>Search</h1>
 
-					<?php if (count($movies) > 0): ?>
+					<?php if (count($threads) > 0): ?>
 
 					<ol>
-						<?php foreach($movies as $movie): ?>
+						<?php foreach($threads as $thread): ?>
 							<li>
-								<h3><a href="./?page=movie&amp;id=<?= $movie->id ?>">
-								<?= $movie->title; ?>
-								</a></h3>
-								<p><?= $movie->description; ?></p>
+								<h3>
+									<a href="./?page=thread&amp;id=<?= $thread->id ?>">
+										<?= $thread->title; ?>
+									</a>
+								</h3>
+								<p><?= $thread->description; ?></p>
 							</li>
 						<?php endforeach; ?>
 					</ol>
 
 					<?php else: ?>
 
-						<p>There are no movies that match.</p>
+						<p>There are no threads that match.</p>
 
 					<?php endif; ?>
 

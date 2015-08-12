@@ -3,38 +3,38 @@
 namespace App\Controllers;
 
 use App\Models\Comment;
-use App\Models\Movie;
-use App\Views\MoviesView;
-use App\Views\SingleMovieView;
-use App\Views\MovieFormView;
+use App\Models\Thread;
+use App\Views\ThreadsView;
+use App\Views\SingleThreadView;
+use App\Views\ThreadFormView;
 
-class MoviesController extends Controller
+class ThreadsController extends Controller
 {
 	public function index()
 	{
-		$movies = Movie::all("title");
+		$threads = Thread::all("title");
 
-		$view = new MoviesView(compact('movies'));
+		$view = new ThreadsView(compact('threads'));
 		$view->render();
 	}
 //----------------------------------------------------------------------------------------------------------------//
 	public function show()
 	{
-		$movie = new Movie((int)$_GET['id']);
+		$thread = new Thread((int)$_GET['id']);
 		$newcomment = $this->getCommentFormData();
 
-		$comments = $movie->comments();
+		$comments = $thread->comments();
 
-		$view = new SingleMovieView(compact('movie', 'comments', 'newcomment'));
+		$view = new SingleThreadView(compact('thread', 'comments', 'newcomment'));
 		$view->render();
 	}
 //----------------------------------------------------------------------------------------------------------------//
 	public function create()
 	{
 
-		$movie = $this->getMovieFormData();
+		$thread = $this->getThreadFormData();
 
-		$view = new MovieFormView(compact('movie'));
+		$view = new ThreadFormView(compact('thread'));
 		$view->render();
 	}
 //----------------------------------------------------------------------------------------------------------------//
@@ -44,27 +44,27 @@ class MoviesController extends Controller
 		$input = $_POST;
 		$input['user_id'] =	static::$auth->user()->id;
 
-		$movie = new Movie($input);
+		$thread = new Thread($input);
 
-		if (! $movie->isValid()) {
-			$_SESSION['movie.form'] = $movie;
+		if (! $thread->isValid()) {
+			$_SESSION['thread.form'] = $thread;
 			
-			header("Location: ./?page=movie.create");
+			header("Location: ./?page=thread.create");
 			exit();
 		}
 
-		$movie->save();
+		$thread->save();
 
-		header("Location: ./?page=movie&id=" . $movie->id);
+		header("Location: ./?page=thread&id=" . $thread->id);
 	}
 //----------------------------------------------------------------------------------------------------------------//
 	public function edit() 
 	{
 		static::$auth->mustBeAdmin();
 
-		$movie = $this->getMovieFormData($_GET['id']);
+		$thread = $this->getThreadFormData($_GET['id']);
 
-		$view = new MovieFormView(compact('movie'));
+		$view = new ThreadFormView(compact('thread'));
 		$view->render();
 	}
 
@@ -73,25 +73,25 @@ class MoviesController extends Controller
 	{
 		static::$auth->mustBeAdmin();
 
-		$movie = new Movie($_POST['id']);
-		$movie->processArray($_POST);
+		$thread = new Thread($_POST['id']);
+		$thread->processArray($_POST);
 
-		if (! $movie->isValid()) {
-			$_SESSION['movie.form'] = $movie;
+		if (! $thread->isValid()) {
+			$_SESSION['thread.form'] = $thread;
 
-			header("Location: ./?page=movie.edit&id=" . $_POST['id']);
+			header("Location: ./?page=thread.edit&id=" . $_POST['id']);
 			exit();
 		}
 
 		if ($_FILES['poster']['error'] === UPLOAD_ERR_OK) {
-			$movie->savePoster($_FILES['poster']['tmp_name']);
+			$thread->savePoster($_FILES['poster']['tmp_name']);
 		} else if (isset($_POST['remove-image']) && $_POST['remove-image'] === "TRUE") {
-			$movie->poster = null;
+			$thread->poster = null;
 		}
 
-		$movie->save();
+		$thread->save();
 
-		header("Location: ./?page=movie&id=" . $movie->id);
+		header("Location: ./?page=thread&id=" . $thread->id);
 
 	}
 //----------------------------------------------------------------------------------------------------------------//
@@ -99,20 +99,20 @@ class MoviesController extends Controller
 	{
 		static::$auth->mustBeAdmin();
 		
-		Movie::destroy($_POST['id']);
+		Thread::destroy($_POST['id']);
 
-		header("Location: ./?page=movies");
+		header("Location: ./?page=threads");
 	}
 //----------------------------------------------------------------------------------------------------------------//
-	private function getMovieFormData($id = null)
+	private function getThreadFormData($id = null)
 	{
-		if (isset($_SESSION['movie.form'])) {
-			$movie = $_SESSION['movie.form'];
-			unset($_SESSION['movie.form']);
+		if (isset($_SESSION['thread.form'])) {
+			$thread = $_SESSION['thread.form'];
+			unset($_SESSION['thread.form']);
 		} else {
-			$movie = new Movie($id);
+			$thread = new Thread($id);
 		}
-		return $movie;
+		return $thread;
 	}
 //----------------------------------------------------------------------------------------------------------------//
 	private function getCommentFormData($id = null)

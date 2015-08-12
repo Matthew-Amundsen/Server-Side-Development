@@ -16,7 +16,7 @@ class CommentsController extends Controller
 
 		if (! $newcomment->isValid()) {
 			$_SESSION['comment.form'] = $newcomment;
-			header("Location: ./?page=movie&id=" . $newcomment->movie_id);
+			header("Location: ./?page=thread&id=" . $newcomment->thread_id);
 			exit();
 		}
 
@@ -25,7 +25,7 @@ class CommentsController extends Controller
 		}
 
 		$newcomment->save();
-		header("Location: ./?page=movie&id=" . $newcomment->movie_id . "#comment-" . $newcomment->id);
+		header("Location: ./?page=thread&id=" . $newcomment->thread_id . "#comment-" . $newcomment->id);
 	}
 //----------------------------------------------------------------------------------------------------------------//
 
@@ -72,7 +72,7 @@ class CommentsController extends Controller
 
 		$comment->save();
 
-		header("Location: ./?page=movie&id=" . $comment->movie_id);
+		header("Location: ./?page=thread&id=" . $comment->thread_id);
 
 	}
 //----------------------------------------------------------------------------------------------------------------//

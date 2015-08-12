@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Views\SearchResultsView;
-use App\Models\Movie;
+use App\Models\Thread;
 
 class SearchController extends Controller
 {
@@ -15,9 +15,9 @@ class SearchController extends Controller
 			$q = $_GET['q'];
 		}
 
-		$movies = Movie::search($q);
+		$threads = Thread::search($q);
 
-		$view = new SearchResultsView(compact('movies'));
+		$view = new SearchResultsView(compact('threads'));
 		$view->render();
 	}
 }

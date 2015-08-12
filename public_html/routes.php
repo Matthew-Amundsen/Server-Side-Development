@@ -2,9 +2,9 @@
 
 use App\Controllers\HomeController;
 use App\Controllers\AboutController;
-use App\Controllers\MoviesController;
+use App\Controllers\ThreadsController;
 use App\Controllers\MerchandiseController;
-use App\Controllers\MovieSuggestController;
+use App\Controllers\ThreadSuggestController;
 use App\Controllers\ErrorController;
 use App\Controllers\AuthenticationController;
 use App\Controllers\CommentsController;
@@ -14,17 +14,11 @@ use App\Services\Exceptions\InsufficientPrivilegesException;
 
 use \App\Models\Exceptions\ModelNotFoundException;
 
-$page = isset($_GET['page']) ? $_GET['page'] : 'movies';
+$page = isset($_GET['page']) ? $_GET['page'] : 'threads';
 
 try {
 
 	switch ($page) {
-		case "home":
-			
-			$controller = new HomeController();
-			$controller->show();
-
-			break;
 
 		case "profile":
 			
@@ -75,58 +69,51 @@ try {
 
 			break;
 ////////////////////////////////////////////////////////////////////////			
-		case "about":
+		case "thread":
 
-			$controller = new AboutController();
-			$controller->show();
-
-			break;
-
-		case "movie":
-
-			$controller = new MoviesController();
+			$controller = new ThreadsController();
 			$controller->show();
 
 			break;	
 
-		case "movies":
+		case "threads":
 
-			$controller = new MoviesController();
+			$controller = new ThreadsController();
 			$controller->index();
 
 			break;
 ////////////////////////////////////////////////////////////////////////	
-		case "movie.create":
+		case "thread.create":
 
-			$controller = new MoviesController();
+			$controller = new ThreadsController();
 			$controller->create();
 
 			break;
 
-		case "movie.store":
+		case "thread.store":
 
-			$controller = new MoviesController();
+			$controller = new ThreadsController();
 			$controller->store();
 
 			break;
 
-		case "movie.edit":
+		case "thread.edit":
 
-			$controller = new MoviesController();
+			$controller = new ThreadsController();
 			$controller->edit();
 
 			break;
 
-		case "movie.update":
+		case "thread.update":
 
-			$controller = new MoviesController();
+			$controller = new ThreadsController();
 			$controller->update();
 
 			break;
 
-		case "movie.destroy":
+		case "thread.destroy":
 
-			$controller = new MoviesController();
+			$controller = new ThreadsController();
 			$controller->destroy();
 
 			break;
@@ -166,13 +153,6 @@ try {
 
 			break;
 ////////////////////////////////////////////////////////////////////////
-		case "moviesuggest":
-
-			$controller = new MovieSuggestController();
-			$controller->show();
-
-			break;
-
 		default:
 			throw new ModelNotFoundException();
 

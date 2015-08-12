@@ -8,12 +8,12 @@ use Intervention\Image\ImageManagerStatic as Image;
 class Comment extends DatabaseModel
 {
 
-	protected static $columns = ['id', 'user_id', 'movie_id', 'created', 'comment', 'poster'];
+	protected static $columns = ['id', 'user_id', 'thread_id', 'created', 'comment', 'poster'];
 
 	protected static $tableName = "comments";
 
 	protected static $validationRules = [
-		'movie_id'    => 'numeric,exists:\App\Models\Movie',
+		'thread_id'    => 'numeric,exists:\App\Models\Thread',
 		'user_id'     => 'numeric,exists:\App\Models\User',
 		'comment'     => 'minlength:10,maxlength:16000',
 	];
@@ -23,9 +23,9 @@ class Comment extends DatabaseModel
 		return new User($this->user_id);
 	}
 
-	public function movie()
+	public function thread()
 	{
-		return new Movie($this->movie_id);
+		return new Thread($this->thread_id);
 	}
 
 	public function savePoster($filename)

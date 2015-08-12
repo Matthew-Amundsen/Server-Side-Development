@@ -26,7 +26,6 @@
 		<nav>
 			<ul>
 				<li <?php if ($page === "index"): ?>class="active"<?php endif; ?>><a href="./"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Categories</a></li>
-				<li <?php if ($page === "movie"): ?>class="active"<?php endif; ?>><a href="./?page=movie&amp;id=56"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Latest</a></li>
 			</ul>			
 		<hr>
 <!-- Login / Register Buttons - When you first visit this is displayed-->
